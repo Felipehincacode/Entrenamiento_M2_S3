@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>El cerro Quitasol</title>
+</head>
+<body>
+    <header>
+        <div class="video-container">
+            <video autoplay muted loop>
+                <source src="assets/media/Cerro_quitasol1.mp4" type="video/mp4">
+            </video>
+            <div class="overlay"></div>
+        </div>
+        <h1>El cerro Quitasol</h1>
+        <nav>
+            <ul>
+                <li><a href="#acerca-de">Acerca de</a></li>
+                <li><a href="#como-llegar">¿Cómo llegar?</a></li>
+                <li><a href="#galeria">Galería interactiva</a></li>
+                <li><a href="#aventura">Acompañanos a la aventura</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="Acerca-de">
+            <div class="contenido-container">
+                <div class="texto-container">
+                    <h2>Acerca de</h2>
+                    <p>El Cerro Quitasol es una formación montañosa ubicada en el Valle de Aburrá, en el departamento de Antioquia, Colombia. Con una altura de 2.850 metros sobre el nivel del mar, es uno de los puntos más altos de la región y ofrece vistas panorámicas impresionantes de Medellín y sus alrededores.</p>
+                </div>
+                <div class="media-container">
+                    <img src="https://images.unsplash.com/photo-1587595431973-160d0d94add1?q=80&w=1000&auto=format&fit=crop" alt="Vista del Cerro Quitasol">
+                </div>
+            </div>
+        </section>
+
+        <section class="Como-llegar">
+            <div class="contenido-container">
+                <div class="texto-container">
+                    <h2>Cómo llegar</h2>
+                    <p>Para llegar al Cerro Quitasol, puedes tomar la ruta desde Medellín hacia Bello. El cerro es visible desde varios puntos de la ciudad y cuenta con diferentes senderos para acceder a su cima. Te recomendamos visitarlo durante las primeras horas de la mañana para disfrutar de las mejores vistas y evitar las nubes que suelen formarse en la tarde.</p>
+                </div>
+                <div class="media-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.6666666666665!2d-75.55777777777778!3d6.333333333333333!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwMjAnMDAuMCJOIDc1wrAzMycyOC4wIlc!5e0!3m2!1ses!2sco!4v1234567890!5m2!1ses!2sco" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </section>
+
+        <section class="Galeria-interactiva">
+            <div class="texto-container">
+                <h2>Galería Interactiva</h2>
+                <p>Explora nuestra galería interactiva de 360° y descubre cada rincón de nuestro espacio.</p>
+            </div>
+            <div class="panorama-container">
+                <div id="panorama1"></div>
+            </div>
+        </section>
+
+        <div class="panorama-container">
+            <!-- Primer panorama -->
+            <div id="panorama1" class="panorama"></div>
+            
+            <!-- Controles de navegación entre panoramas -->
+            <div class="panorama-nav">
+                <button onclick="showPanorama(1)">Vista 1</button>
+                <button onclick="showPanorama(2)">Vista 2</button>
+                <button onclick="showPanorama(3)">Vista 3</button>
+            </div>
+        </div>
+
+        <!-- Incluir Pannellum -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css"/>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
+
+        <script>
+            // Array con las rutas de las imágenes panorámicas
+            const panoramas = [
+                'assets/img/360_1.jpeg',
+                'assets/img/360_2.jpeg', 
+                'assets/img/360_3.jpeg'
+            ];
+
+            // Configuración inicial del primer panorama
+            let viewer = pannellum.viewer('panorama1', {
+                type: 'equirectangular',
+                panorama: panoramas[0],
+                autoLoad: true,
+                compass: true,
+                hotSpotDebug: true
+            });
+
+            // Función para cambiar entre panoramas
+            function showPanorama(number) {
+                viewer.destroy();
+                viewer = pannellum.viewer('panorama1', {
+                    type: 'equirectangular',
+                    panorama: panoramas[number - 1],
+                    autoLoad: true,
+                    compass: true
+                });
+            }
+        </script>
+    </main>
+    <footer></footer>
+</body>
+</html>
