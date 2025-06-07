@@ -1,18 +1,4 @@
-/* ==========================================================================
-   Project: El Cerro Quitasol - Landing Page
-   Author: [Your Name/AI Assistant]
-   Description: A visually rich, responsive landing page for the Cerro Quitasol
-                tourist destination. It features a video background, interactive
-                content sections, and a 360-degree photo gallery built with A-Frame.
-   ========================================================================== */
 
-/* 
-  HEADS UP: To use the new fonts, please add this line to the <head> of your HTML file:
- 
-
-/* ==========================================================================
-   1. Base & Reset Styles
-   ========================================================================== */
 /* Reset básico: Elimina márgenes y paddings por defecto de los navegadores
    y establece 'border-box' para un modelo de caja más intuitivo. */
 * {
@@ -33,7 +19,7 @@ body {
     background-color: #121212;
     color: #f0f0f0;
     -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale; /* Smoother fonts on firefox */
+    
 }
 
 /* ==========================================================================
@@ -104,6 +90,7 @@ header h1 {
     text-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
     z-index: 1;
     margin-bottom: 2rem; /* Space between title and nav */
+    text-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
 }
 
 /* Barra de navegación:
@@ -146,15 +133,13 @@ nav a {
    - El 'transform: translateY(-3px)' crea un efecto de "levantamiento".
    - La sombra de la caja se vuelve más pronunciada y coloreada, añadiendo profundidad. */
 nav a:hover {
-    background-color: #00bfa5; /* New vibrant accent color */
+    background-color: #00bfa5; 
     color: white;
     transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(0, 191, 165, 0.2); /* Colored shadow for depth */
+    box-shadow: 0 10px 20px rgba(0, 191, 165, 0.2); 
 }
 
-/* ==========================================================================
-   4. Main Content & Section Layout
-   ========================================================================== */
+
 /* Contenedor principal del contenido:
    - 'overflow: hidden' previene cualquier desbordamiento horizontal inesperado.
    - Se añade padding vertical para separar el contenido del header y footer. */
@@ -168,7 +153,7 @@ main {
    - Se añade un margen inferior generoso para crear un ritmo vertical y
      separar visualmente cada bloque de contenido. */
 section {
-    margin-bottom: 6rem; /* Increased space between sections */
+    margin-bottom: 3rem; 
 }
 
 /* Contenedor de contenido principal (Layout):
@@ -334,7 +319,7 @@ section {
    - Se limita su ancho para una lectura cómoda y se centra. */
 #galeria-360 p {
     font-size: 1.1rem;
-    color: #ccc;
+    color: #ffffff;
     max-width: 600px;
     margin: 0 auto 2rem auto;
 }
