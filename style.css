@@ -1,20 +1,46 @@
-/* Reset básico */
+/* ==========================================================================
+   Project: El Cerro Quitasol - Landing Page
+   Author: [Your Name/AI Assistant]
+   Description: A visually rich, responsive landing page for the Cerro Quitasol
+                tourist destination. It features a video background, interactive
+                content sections, and a 360-degree photo gallery built with A-Frame.
+   ========================================================================== */
+
+/* 
+  HEADS UP: To use the new fonts, please add this line to the <head> of your HTML file:
+ 
+
+/* ==========================================================================
+   1. Base & Reset Styles
+   ========================================================================== */
+/* Reset básico: Elimina márgenes y paddings por defecto de los navegadores
+   y establece 'border-box' para un modelo de caja más intuitivo. */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* Estilos base del body:
+   - Define las fuentes principales para el proyecto. 'Montserrat' para el cuerpo
+     y 'Playfair Display' para los títulos, importadas de Google Fonts.
+   - Establece un fondo oscuro (#121212) y un color de texto claro por defecto (#f0f0f0)
+     para un alto contraste y buena legibilidad.
+   - Activa el antialiasing para un renderizado de fuentes más suave. */
 body {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Montserrat', sans-serif; /* Changed for better readability */
     line-height: 1.6;
     background-color: #121212;
     color: #f0f0f0;
     -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    -moz-osx-font-smoothing: grayscale; /* Smoother fonts on firefox */
 }
 
-/* ===== HEADER Y VIDEO DE FONDO ===== */
+/* ==========================================================================
+   2. Header & Fullscreen Video
+   ========================================================================== */
+/* El header ocupa toda la altura de la pantalla (100vh) y centra su contenido
+   (título y navegación) vertical y horizontalmente usando Flexbox. */
 header {
     position: relative;
     height: 100vh;
@@ -25,6 +51,9 @@ header {
     align-items: center;
 }
 
+/* Contenedor del video de fondo:
+   - Se posiciona de forma absoluta para llenar todo el header.
+   - 'z-index: -1' lo coloca detrás de todo el contenido del header. */
 .video-container {
     position: absolute;
     top: 0;
@@ -35,12 +64,18 @@ header {
     z-index: -1;
 }
 
+/* El video se ajusta para cubrir completamente el contenedor sin perder
+   sus proporciones, gracias a 'object-fit: cover'. */
 .video-container video {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
+/* Capa de superposición (overlay):
+   - Se coloca sobre el video para oscurecerlo y asegurar que el texto
+     blanco del título sea legible.
+   - Utiliza un gradiente lineal sutil para un efecto más refinado. */
 .overlay {
     position: absolute;
     top: 0;
@@ -54,7 +89,13 @@ header {
     );
 }
 
-/* ===== TÍTULO PRINCIPAL ===== */
+/* ==========================================================================
+   3. Typography & Navigation
+   ========================================================================== */
+/* Título principal:
+   - Usa la fuente 'Playfair Display' para un toque elegante y de alto impacto.
+   - Se aumenta el tamaño de fuente y se aplica una sombra de texto más profunda
+     para darle prominencia sobre el video de fondo. */
 header h1 {
     font-family: 'Playfair Display', serif;
     text-align: center;
@@ -62,22 +103,30 @@ header h1 {
     font-weight: 700;
     text-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
     z-index: 1;
-    margin-bottom: 2rem;
+    margin-bottom: 2rem; /* Space between title and nav */
 }
 
-/* ===== BARRA DE NAVEGACIÓN ===== */
+/* Barra de navegación:
+   - Se centra horizontalmente en el header. */
 nav {
     display: flex;
     justify-content: center;
 }
 
+/* Lista de navegación:
+   - Organiza los elementos de navegación en una fila con un espaciado definido. */
 nav ul {
     display: flex;
     gap: 1.5rem;
     list-style: none;
-    margin-top: 0;
+    margin-top: 0; /* Handled by header flexbox */
 }
 
+/* Enlaces de navegación:
+   - Diseñados como "píldoras" (botones redondeados) para un look moderno.
+   - Se definen colores, padding y una sombra sutil para darles profundidad.
+   - La transición se define con una curva de Bézier personalizada para una
+     animación de hover más suave y natural. */
 nav a {
     color: #121212;
     text-decoration: none;
@@ -88,69 +137,106 @@ nav a {
     font-weight: 600;
     letter-spacing: 0.05em;
     text-align: center;
-    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); /* Smoother, more satisfying transition */
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
+/* Efecto hover para los enlaces de navegación:
+   - Cambia el color de fondo a un verde azulado vibrante (#00bfa5) para feedback interactivo.
+   - El 'transform: translateY(-3px)' crea un efecto de "levantamiento".
+   - La sombra de la caja se vuelve más pronunciada y coloreada, añadiendo profundidad. */
 nav a:hover {
-    background-color: #00bfa5;
+    background-color: #00bfa5; /* New vibrant accent color */
     color: white;
     transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(0, 191, 165, 0.2);
+    box-shadow: 0 10px 20px rgba(0, 191, 165, 0.2); /* Colored shadow for depth */
 }
 
-/* ===== LAYOUT GENERAL DE SECCIONES ===== */
+/* ==========================================================================
+   4. Main Content & Section Layout
+   ========================================================================== */
+/* Contenedor principal del contenido:
+   - 'overflow: hidden' previene cualquier desbordamiento horizontal inesperado.
+   - Se añade padding vertical para separar el contenido del header y footer. */
 main {
     width: 100%;
     overflow: hidden;
     padding: 2rem 0;
 }
 
-/* Estilos base para todas las secciones */
+/* Estilos base para todas las secciones de contenido:
+   - Se añade un margen inferior generoso para crear un ritmo vertical y
+     separar visualmente cada bloque de contenido. */
 section {
-    margin-bottom: 6rem;
+    margin-bottom: 6rem; /* Increased space between sections */
 }
 
-/* Contenedor de contenido */
+/* Contenedor de contenido principal (Layout):
+   - 'max-width: 90vw' limita el ancho del contenido para mejorar la legibilidad
+     en pantallas grandes, evitando líneas de texto demasiado largas.
+   - 'margin: 0 auto' centra este contenedor en la página.
+   - Se usa Flexbox para alinear las tarjetas de texto y media. */
 .contenido-container {
     max-width: 90vw;
     margin: 0 auto;
     display: flex;
-    gap: 3rem;
-    align-items: stretch;
+    gap: 3rem; /* More space between cards */
+    align-items: stretch; /* Asegura que las tarjetas tengan la misma altura */
 }
 
-/* Contenedores de texto e imagen */
+/* ==========================================================================
+   5. Content Cards (Text & Media)
+   ========================================================================== */
+/* Contenedores de texto (tarjetas blancas):
+   - Toman el 65% del espacio disponible en el '.contenido-container'.
+   - Se definen con fondo blanco, padding generoso, bordes redondeados y una sombra
+     sutil para que "floten" sobre el fondo oscuro.
+   - Tienen una transición para el efecto de hover. */
 .texto-container {
     flex: 0.65;
-    padding: 2.5rem;
+    padding: 2.5rem; /* More generous padding */
     background-color: white;
     border-radius: 12px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
     transition: all 0.3s ease-in-out;
 }
 
+/* Efecto hover para las tarjetas de texto:
+   - Se elevan ligeramente y su sombra se hace más pronunciada, proporcionando
+     un feedback visual claro al usuario. */
 .texto-container:hover {
-    transform: translateY(-5px);
+    transform: translateY(-5px); /* Lift effect for the whole card */
     box-shadow: 0 15px 35px rgba(0,0,0,0.15);
 }
 
+/* Contenedores de media (imágenes y mapas):
+   - Toman el 40% del espacio.
+   - No tienen fondo ni sombra para que la media (imagen/mapa) se integre
+     de forma más directa en el diseño.
+   - 'overflow: hidden' es crucial para que el 'border-radius' se aplique a la
+     imagen o iframe que contienen.
+   - También tienen una transición para un efecto de hover. */
 .media-container {
     flex: 0.4;
     padding: 0;
     background-color: transparent;
     box-shadow: none;
     border-radius: 12px;
-    overflow: hidden;
+    overflow: hidden; /* Important for child animations */
     transition: all 0.3s ease-in-out;
 }
 
+/* Efecto hover para los contenedores de media:
+   - La media se escala ligeramente (efecto de zoom) y se añade una sombra
+     para crear un efecto dinámico y atractivo. */
 .media-container:hover {
-    transform: scale(1.03);
+    transform: scale(1.03); /* Zoom effect on hover */
     box-shadow: 0 15px 35px rgba(0,0,0,0.2);
 }
 
-/* Estilos para los títulos y párrafos */
+/* Títulos dentro de las tarjetas de texto:
+   - Utilizan la fuente 'Playfair Display' para consistencia de marca.
+   - Se posicionan relativamente para poder anclar el pseudo-elemento '::after'. */
 .texto-container h2 {
     font-family: 'Playfair Display', serif;
     margin-bottom: 1.5rem;
@@ -165,6 +251,8 @@ section {
     padding-bottom: 0.5rem;
 }
 
+/* Se anulan los efectos de hover por defecto que tenían los títulos.
+   La interactividad ahora está en la tarjeta y en el subrayado. */
 .texto-container h2:hover {
     background-color: transparent;
     color: #121212;
@@ -172,7 +260,10 @@ section {
     box-shadow: none;
 }
 
-/* Animated underline for section titles */
+/* Subrayado animado para los títulos de sección:
+   - Se crea usando un pseudo-elemento '::after'.
+   - Inicialmente tiene un ancho de 0.
+   - La transición se aplica a la propiedad 'width'. */
 .texto-container h2::after {
     content: '';
     position: absolute;
@@ -184,37 +275,54 @@ section {
     transition: width 0.4s ease-in-out;
 }
 
+/* Cuando el usuario hace hover sobre la tarjeta (.texto-container), el ancho
+   del subrayado del título se anima hasta el 50%. */
 .texto-container:hover h2::after {
-    width: 50%;
+    width: 50%; /* Animate on parent hover */
 }
 
+/* Párrafos de texto:
+   - Se usa un color de texto gris oscuro (#555) en lugar de negro puro para
+     reducir la fatiga visual sobre el fondo blanco de la tarjeta.
+   - Se aumenta el tamaño de fuente y el grosor para mejorar la legibilidad. */
 .texto-container p {
-    color: #555;
+    color: #555; /* Softer than pure black for readability */
     line-height: 1.8;
-    font-size: 1.2rem;
-    font-weight: 500;
+    font-size: 1.2rem; /* Larger font size for comfort */
+    font-weight: 500; /* A bit bolder for clarity */
 }
 
-/* Estilos para imágenes y mapas */
+/* Estilos para las imágenes y mapas:
+   - Se aseguran de que ocupen el 100% del contenedor de media.
+   - 'object-fit: cover' asegura que la imagen cubra el área sin distorsionarse.
+   - El radio de borde coincide con el de las tarjetas para consistencia visual. */
 .media-container img,
 .media-container iframe {
     width: 100%;
     height: 100%;
     min-height: 400px;
     object-fit: cover;
-    border-radius: 12px;
+    border-radius: 12px; /* Match new radius */
 }
 
-/* Invertimos el orden para "Como llegar" */
+/* Modificador para la sección "Como llegar":
+   - Utiliza 'flex-direction: row-reverse' para invertir el orden de la
+     tarjeta de texto y el mapa, creando una variación en el layout. */
 .Como-llegar .contenido-container {
     flex-direction: row-reverse;
 }
 
-/* ===== A-FRAME 360 GALLERY ===== */
+/* ==========================================================================
+   6. A-Frame 360 Gallery
+   ========================================================================== */
+/* Contenedor de la sección de la galería:
+   - Se centra el texto introductorio. */
 #galeria-360 {
     text-align: center;
 }
 
+/* Título de la galería:
+   - Usa la fuente principal de títulos y un color claro para destacar sobre el fondo oscuro. */
 #galeria-360 h2 {
     font-family: 'Playfair Display', serif;
     font-size: 2.5rem;
@@ -222,6 +330,8 @@ section {
     margin-bottom: 1rem;
 }
 
+/* Párrafo de introducción de la galería:
+   - Se limita su ancho para una lectura cómoda y se centra. */
 #galeria-360 p {
     font-size: 1.1rem;
     color: #ccc;
@@ -229,6 +339,11 @@ section {
     margin: 0 auto 2rem auto;
 }
 
+/* Contenedor del visor de A-Frame:
+   - Define un área con una altura fija donde se renderizará la escena de A-Frame.
+   - Se ajusta al 'max-width' del resto del contenido (90vw) y se centra.
+   - 'overflow: hidden' y 'border-radius' le dan la misma apariencia de tarjeta
+     que a los otros elementos de media. */
 .a-frame-container {
     max-width: 90vw;
     margin: 0 auto;
@@ -238,6 +353,8 @@ section {
     box-shadow: 0 10px 30px rgba(0,0,0,0.2);
 }
 
+/* Contenedor para los botones de control de la galería:
+   - Se utiliza Flexbox para centrarlos y espaciarlos uniformemente. */
 .a-frame-controls {
     display: flex;
     justify-content: center;
@@ -245,6 +362,9 @@ section {
     margin-top: 2rem;
 }
 
+/* Estilos para los botones de control de la galería:
+   - Heredan el diseño de "píldora" de la navegación principal para mantener la
+     consistencia del lenguaje de diseño en toda la página. */
 .a-frame-btn {
     background-color: #00bfa5;
     color: white;
@@ -258,29 +378,41 @@ section {
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
+/* Efecto hover y estado "activo" para los botones de control:
+   - El estado '.active' se gestiona con JavaScript para indicar la vista actual.
+   - Proporcionan el mismo feedback visual (color, elevación, sombra) que los
+     botones de navegación para una experiencia de usuario coherente. */
 .a-frame-btn:hover, .a-frame-btn.active {
     background-color: #00a08b; /* Darker shade */
     transform: translateY(-2px);
     box-shadow: 0 8px 15px rgba(0, 191, 165, 0.2);
 }
 
-/* ===== MEDIA QUERIES ===== */
+/* ==========================================================================
+   7. Media Queries & Responsive Design
+   ========================================================================== */
+/* Punto de ruptura para tabletas y dispositivos móviles (768px o menos). */
 @media (max-width: 768px) {
+    /* Ajustes para el título principal en móviles para que no sea tan grande. */
     header h1 {
         font-size: 3rem;
         margin-bottom: 2.5rem;
     }
 
+    /* La navegación se apila verticalmente en móviles. */
     nav ul {
         flex-direction: column;
         gap: 1rem;
     }
     
+    /* Los botones de navegación se hacen ligeramente más pequeños para adaptarse. */
     nav a {
         padding: 0.6rem 1.5rem;
         font-size: 0.9rem;
     }
     
+    /* Se ajusta el padding del 'main' y el margen de las secciones para
+       optimizar el espaciado vertical en pantallas más pequeñas. */
     main {
         padding: 1rem 0;
     }
@@ -289,30 +421,41 @@ section {
         margin-bottom: 4rem;
     }
 
+    /* El contenedor de contenido se apila verticalmente y ocupa casi todo el ancho. */
     .contenido-container {
         flex-direction: column;
         gap: 2rem;
         max-width: 95vw;
     }
 
+    /* Anula la dirección inversa en móvil para que también se apile verticalmente. */
+    .Como-llegar .contenido-container {
+        flex-direction: column;
+    }
+
+    /* Se ajusta el padding de las tarjetas de texto. */
     .texto-container {
         padding: 2rem;
     }
 
+    /* Se reduce el tamaño de los títulos y párrafos para una mejor jerarquía
+       visual en dispositivos móviles. */
     .texto-container h2 {
         font-size: 2rem;
     }
 
     .texto-container p {
         font-size: 1rem;
-        font-weight: 400; /* Normal weight for better readability on small screens */
+        font-weight: 400; /* Se revierte a peso normal para máxima legibilidad en pantallas pequeñas. */
     }
 
+    /* Se define una altura mínima para las imágenes y mapas en móvil. */
     .media-container img,
     .media-container iframe {
         min-height: 300px;
     }
 
+    /* Se ajusta la tipografía de la sección de la galería para móviles. */
     #galeria-360 h2 {
         font-size: 2rem;
     }
@@ -321,11 +464,14 @@ section {
         font-size: 1rem;
     }
 
+    /* Se reduce la altura del visor de A-Frame en móviles. */
     .a-frame-container {
         height: 400px;
         max-width: 95vw;
     }
 
+    /* Se permite que los botones de control de la galería se envuelvan (pasen a la
+       siguiente línea) si no caben en el ancho de la pantalla. */
     .a-frame-controls {
         flex-wrap: wrap;
     }
